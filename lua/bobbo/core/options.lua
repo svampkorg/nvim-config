@@ -42,10 +42,14 @@ opt.iskeyword:append("-")
 
 -- set commands
 vim.cmd([[
-	let g:dart_format_on_save=v:true
-	let g:dartfmt_options = ['--fix', '--line-length 120']
+  autocmd BufWritePre * lua vim.lsp.buf.format()
 ]])
 
+-- For use with dart-vim-plugin
+--let g:dart_format_on_save=v:true
+--let g:dartfmt_options = ['--fix', '--line-length 120']
+--
+--
 --opt.list = true
 --highlight IndentBlanklineChar guifg=#202020 gui=nocombine
 --highlight CursorLine guibg=#21262d

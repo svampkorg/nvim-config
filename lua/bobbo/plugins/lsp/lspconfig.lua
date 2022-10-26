@@ -26,6 +26,7 @@ local on_attach = function(client, bufnr)
 	--local opts = { noremap = true, silent = true, buffer = bufnr }
 	--local map = vim.api.nvim_buf_set_keymap
 
+	local keymap = vim.keymap
 	local map = vim.api.nvim_buf_set_keymap
 	local opt = vim.api.nvim_buf_set_option
 	local opts = { noremap = true, silent = true }
@@ -67,11 +68,11 @@ local on_attach = function(client, bufnr)
 	--keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", opts)
 	--keymap.set("n", "<leader>o", "<CMD>LSoutlineToggle<CR>", opts)
 
-	--if client.name == "tsserver" then
-	--	keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-	--	keymap.set("n", "<leader>oi", ":TypeScriptOrganizeImports<CR>") -- organize imports
-	--	keymap.set("n", "<leader>ru", ":TypeScriptRemoveUnused<CR>") -- remove unused variables
-	--end
+	if client.name == "tsserver" then
+		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
+		keymap.set("n", "<leader>oi", ":TypeScriptOrganizeImports<CR>") -- organize imports
+		keymap.set("n", "<leader>ru", ":TypeScriptRemoveUnused<CR>") -- remove unused variables
+	end
 end
 
 -- used to enable autocompletion (assign to every lsp config)
@@ -236,6 +237,7 @@ flutter_tools.setup({
 			virtual_text_str = "■", -- the virtual text character to highlight
 		},
 		on_attach = on_attach,
+		capabilities = capabilities,
 		-- capabilities = my_custom_capabilities -- e.g. lsp_status capabilities
 		-- --- OR you can specify a function to deactivate or change or control how the config is created
 		--capabilities = function(config)
