@@ -40,6 +40,9 @@ opt.splitbelow = true
 -- set so hello-world is a whole word, not two words
 opt.iskeyword:append("-")
 
+-- font setting for neovide and other gui based nvim-apps
+opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h15" }
+
 -- set commands
 vim.cmd([[
   autocmd BufWritePre * lua vim.lsp.buf.format()
