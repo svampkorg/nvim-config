@@ -29,6 +29,7 @@ mason_lspconfig.setup({
 		"eslint",
 		"jsonls",
 		"kotlin_language_server",
+		"jdtls",
 		--"dartls",
 		--'flutter',
 	},
