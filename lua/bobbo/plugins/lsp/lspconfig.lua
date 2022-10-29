@@ -108,6 +108,21 @@ lspconfig["tailwindcss"].setup({
 	on_attach = on_attach,
 })
 
+lspconfig["jdtls"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+--lspconfig["kotlin-language-server"].setup({
+--	capabilities = capabilities,
+--	on_attach = on_attach,
+--})
+--
+--lspconfig["ktlint"].setup({
+--	capabilities = capabilities,
+--	on_attach = on_attach,
+--})
+
 --lspconfig["dartls"].setup({
 --	capabilities = capabilities,
 --	on_attach = on_attach,
