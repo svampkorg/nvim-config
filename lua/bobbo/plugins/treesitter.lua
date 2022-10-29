@@ -29,6 +29,8 @@ treesitter.setup({
 		"c",
 		"c_sharp",
 		"cpp",
+		"java",
+		"kotlin",
 	},
 	auto_install = true,
 })
