@@ -44,8 +44,11 @@ opt.iskeyword:append("-")
 opt.guifont = { "JetBrainsMono Nerd Font Mono", ":h15" }
 
 -- set commands
+-- format on write
+-- highlight yanks
 vim.cmd([[
   autocmd BufWritePre * lua vim.lsp.buf.format()
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']('HighlightedyankRegion') > 0 and 'HighlightedyankRegion' or 'IncSearch'), timeout=500}
 ]])
 
 -- For use with dart-vim-plugin
