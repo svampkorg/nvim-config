@@ -80,6 +80,7 @@ return packer.startup(function(use)
 	use("kkharji/lspsaga.nvim")
 	use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim")
+	use("ray-x/lsp_signature.nvim")
 	--Plug 'akinsho/flutter-tools.nvim'
 	--Plug 'dart-lang/dart-vim-plugin'
 
