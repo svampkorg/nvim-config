@@ -97,6 +97,8 @@ return packer.startup(function(use)
 			require("nvim-treesitter.install").update({ with_sync = true })
 		end,
 	})
+	-- sticky scroll/context scroll
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- auto closing
 	use("windwp/nvim-autopairs")
