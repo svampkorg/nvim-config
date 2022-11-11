@@ -43,3 +43,7 @@ keymap.set("n", "<leader>fs", "<CMD>Telescope grep_string<CR>")
 keymap.set("n", "<leader>fb", "<CMD>Telescope buffers<CR>")
 keymap.set("n", "<leader>fh", "<CMD>Telescope help_tags<CR>")
 keymap.set("n", "<leader>fc", "<CMD>Telescope flutter commands<CR>")
+
+-- illuminate
+keymap.set("n", "<leader>rf", "<CMD>lua require('illuminate').goto_next_reference(warp)<CR>")
+keymap.set("n", "<leader>rb", "<CMD>lua require('illuminate').goto_prev_reference(warp)<CR>")
