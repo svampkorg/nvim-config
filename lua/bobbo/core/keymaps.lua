@@ -47,3 +47,4 @@ keymap.set("n", "<leader>fc", "<CMD>Telescope flutter commands<CR>")
 -- illuminate
 keymap.set("n", "<leader>rf", "<CMD>lua require('illuminate').goto_next_reference(warp)<CR>")
 keymap.set("n", "<leader>rb", "<CMD>lua require('illuminate').goto_prev_reference(warp)<CR>")
+keymap.set("n", "<leader>rs", "<CMD>lua require('illuminate').textobj_select(warp)<CR>")
