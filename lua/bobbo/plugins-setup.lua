@@ -53,6 +53,7 @@ return packer.startup(function(use)
 
 	-- status line
 	use("nvim-lualine/lualine.nvim")
+	use("SmiteshP/nvim-navic")
 
 	-- fuzzy finding
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependancy to make telescope perform better
@@ -81,8 +82,6 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim")
 	use("onsails/lspkind.nvim")
 	use("ray-x/lsp_signature.nvim")
-	--Plug 'akinsho/flutter-tools.nvim'
-	--Plug 'dart-lang/dart-vim-plugin'
 
 	-- formatting & linting
 	use("jose-elias-alvarez/null-ls.nvim")
@@ -108,6 +107,9 @@ return packer.startup(function(use)
 	-- git signs plugin
 	use("lewis6991/gitsigns.nvim")
 	use("kdheepak/lazygit.nvim")
+
+	-- auto highlight word match
+	use("RRethy/vim-illuminate")
 
 	-- indentation helper lines
 	--use("lukas-reineke/indent-blankline.nvim")

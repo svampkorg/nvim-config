@@ -33,7 +33,7 @@ nvimtree.setup({
 			},
 		},
 		float = {
-			enable = true,
+			enable = false,
 			quit_on_focus_loss = true,
 			open_win_config = {
 				relative = "editor",
@@ -60,7 +60,7 @@ nvimtree.setup({
 	},
 	actions = {
 		open_file = {
-			quit_on_open = true,
+			quit_on_open = false,
 			window_picker = {
 				enable = false,
 			},

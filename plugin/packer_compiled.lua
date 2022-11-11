@@ -189,6 +189,11 @@ _G.packer_plugins = {
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
+  },
   ["nvim-notify"] = {
     loaded = true,
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/nvim-notify",
@@ -245,6 +250,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
   },
   ["vim-maximizer"] = {
     loaded = true,
