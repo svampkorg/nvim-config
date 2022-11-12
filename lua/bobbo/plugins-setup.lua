@@ -111,6 +111,9 @@ return packer.startup(function(use)
 	-- auto highlight word match
 	use("RRethy/vim-illuminate")
 
+	-- colorscheme
+	use("navarasu/onedark.nvim")
+
 	-- indentation helper lines
 	--use("lukas-reineke/indent-blankline.nvim")
 
