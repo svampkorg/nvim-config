@@ -114,6 +114,9 @@ return packer.startup(function(use)
 	-- auto highlight word match
 	-- use("RRethy/vim-illuminate")
 
+	-- nvim cheatsheet
+	use({ "sudormrfbin/cheatsheet.nvim", requires = { "nvim-lua/popup.nvim" } })
+
 	-- colorscheme
 	use("navarasu/onedark.nvim")
 

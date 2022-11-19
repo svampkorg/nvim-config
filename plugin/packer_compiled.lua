@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["cheatsheet.nvim"] = {
+    loaded = true,
+    path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/cheatsheet.nvim",
+    url = "https://github.com/sudormrfbin/cheatsheet.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -245,6 +250,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["popup.nvim"] = {
+    loaded = true,
+    path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/popup.nvim",
+    url = "https://github.com/nvim-lua/popup.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
