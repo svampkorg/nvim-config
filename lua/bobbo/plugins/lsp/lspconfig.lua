@@ -18,6 +18,16 @@ if not status then
 	return
 end
 
+-- local sourcekit_status, sourcekit = pcall(require, "sourcekit")
+-- if not sourcekit_status then
+-- 	return
+-- end
+
+-- local kotlin_status, kotlin_language_server = pcall(require, "kotlin-language-server")
+-- if not kotlin_status then
+-- 	return
+-- end
+
 --local keymap = vim.keymap
 
 -- enable keybinds for available lsp server
@@ -26,52 +36,80 @@ local on_attach = function(client, bufnr)
 	--local opts = { noremap = true, silent = true, buffer = bufnr }
 	--local map = vim.api.nvim_buf_set_keymap
 
-	local keymap = vim.keymap
+	--local keymap = vim.keymap
 	local map = vim.api.nvim_buf_set_keymap
-	local opt = vim.api.nvim_buf_set_option
+	--local opt = vim.api.nvim_buf_set_option
 	local opts = { noremap = true, silent = true }
+	vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, opts)
+	vim.keymap.set("n", "gk", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "gj", vim.diagnostic.goto_next, opts)
+	--vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, opts)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	opt(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-	map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	--vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	--vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	--vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	--vim.keymap.set('n', '<leader>wl', function()
+	--  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	--end, bufopts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "<space>f", function()
+		vim.lsp.buf.format({ async = true })
+	end, bufopts)
+
+	-- LSPCONFIG
+	--opt(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	--map(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	--map(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	--map(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	--map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 	--map(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-	map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
-	map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-	map(bufnr, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
-	map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
-	map(bufnr, "n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-	map(bufnr, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-	map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-	map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
-	map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
-	map(bufnr, "n", "<C-c>", "<cmd>close<CR>", opts)
+	-- LSP SAGA
+	--map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+	--map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+	--map(bufnr, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+	----	map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+	----map(bufnr, "n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+	--map(bufnr, "n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+	--map(bufnr, "n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+	--map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
+	--map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
+	--map(bufnr, "n", "<C-c>", "<cmd>close<CR>", opts)
 	--map(0, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", { silent = true, noremap = true })
 	--map(0, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", { silent = true, noremap = true })
-	--
-	--
+
 	--- In lsp attach function
 	-- set keybinds
 	--keymap.set("n", "gf", "<CMD>Lspsaga lsp_finder<CR>", opts)
 	--keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
 	--keymap.set("n", "gd", "<CMD>Lspsaga peek_definition<CR>", opts)
 	--keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
-	----keymap.set({ "n", "v" }, "<leader>ca", "<CMD>Lspsaga code_action<CR>", opts)
-	----keymap.set({"n","v"}, "<leader>ca", ":<c-u>Lspsaga range_code_action<CR>", opts)
-	----map(0, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", {silent = true, noremap = true})
-	--keymap.set("n", "<leader>rn", "<CMD>Lspsaga rename<CR>", opts)
-	--keymap.set("n", "<leader>d", "<CMD>Lspsaga show_line_diagnostics<CR>", opts)
-	--keymap.set("n", "<leader>d", "<CMD>Lspsaga show_cursor_diagnostics<CR>", opts)
-	--keymap.set("n", "dk", "<CMD>Lspsaga diagnostic_jump_prev<CR>", opts)
-	--keymap.set("n", "dj", "<CMD>Lspsaga diagnostic_jump_next", opts)
-	--keymap.set("n", "K", "<CMD>Lspsaga hover_doc<CR>", opts)
-	--keymap.set("n", "<leader>o", "<CMD>LSoutlineToggle<CR>", opts)
+	if client.name == "dartls" then
+		-- keymaps for dartls
+		map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+		map(bufnr, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+		map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+	--map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
+	--map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
+	--map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
+	else
+		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+		--vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	end
 
 	if client.name == "tsserver" then
-		keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
-		keymap.set("n", "<leader>oi", ":TypeScriptOrganizeImports<CR>") -- organize imports
-		keymap.set("n", "<leader>ru", ":TypeScriptRemoveUnused<CR>") -- remove unused variables
+		vim.keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
+		vim.keymap.set("n", "<leader>oi", ":TypeScriptOrganizeImports<CR>") -- organize imports
+		vim.keymap.set("n", "<leader>ru", ":TypeScriptRemoveUnused<CR>") -- remove unused variables
 	end
 end
 
@@ -113,11 +151,23 @@ lspconfig["jdtls"].setup({
 	on_attach = on_attach,
 })
 
---lspconfig["kotlin-language-server"].setup({
---	capabilities = capabilities,
---	on_attach = on_attach,
---})
---
+-- change to lspconfig["kotlin-language-server"].setup
+lspconfig["kotlin_language_server"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+lspconfig["sourcekit"].setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	cmd = { "xcrun", "sourcekit-lsp", "--log-level", "error" },
+	filetypes = { "swift", "objective-c", "objective-cpp" },
+})
+-- lspconfig["kotlin"].setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+-- --
 --lspconfig["ktlint"].setup({
 --	capabilities = capabilities,
 --	on_attach = on_attach,
@@ -158,6 +208,11 @@ lspconfig["sumneko_lua"].setup({
 		},
 	},
 })
+
+-- kotlin_language_server.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
 
 -- flutter
 flutter_tools.setup({
@@ -233,6 +288,7 @@ flutter_tools.setup({
 	-- },
 	dev_log = {
 		enabled = true,
+		--open_cmd = ":silent !tmux split-window -dh",
 		open_cmd = "tabedit", -- command to use to open the log buffer
 	},
 	dev_tools = {
