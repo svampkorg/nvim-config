@@ -256,11 +256,6 @@ _G.packer_plugins = {
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/typescript.nvim",
     url = "https://github.com/jose-elias-alvarez/typescript.nvim"
   },
-  ["vim-illuminate"] = {
-    loaded = true,
-    path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/vim-illuminate",
-    url = "https://github.com/RRethy/vim-illuminate"
-  },
   ["vim-maximizer"] = {
     loaded = true,
     path = "/Users/bobbo/.local/share/nvim/site/pack/packer/start/vim-maximizer",

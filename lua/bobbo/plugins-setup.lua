@@ -109,7 +109,7 @@ return packer.startup(function(use)
 	use("kdheepak/lazygit.nvim")
 
 	-- auto highlight word match
-	use("RRethy/vim-illuminate")
+	-- use("RRethy/vim-illuminate")
 
 	-- colorscheme
 	use("navarasu/onedark.nvim")
