@@ -66,7 +66,9 @@ bufferline.setup({
 				filetype = "NvimTree",
 				text = "File Tree", -- | function ,
 				text_align = "center", -- | "left" | "right"
-				separator = false,
+				--separator = true,
+				padding = 1,
+				--separator_style = "slant", -- slapnt, padded_slant, thick, thin or a custom list {"left_separator", "right_separator"}
 			},
 		},
 		--color_icons = true | false, -- whether or not to add the filetype icon highlights
