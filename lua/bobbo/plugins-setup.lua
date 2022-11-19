@@ -55,6 +55,9 @@ return packer.startup(function(use)
 	use("nvim-lualine/lualine.nvim")
 	use("SmiteshP/nvim-navic")
 
+	-- buffer line
+	use({ "akinsho/bufferline.nvim", tag = "v3.*" })
+
 	-- fuzzy finding
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependancy to make telescope perform better
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
