@@ -60,7 +60,8 @@ local on_attach = function(client, bufnr)
 	--  print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	--end, bufopts)
 	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	--vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
+	vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, bufopts)
 	vim.keymap.set("n", "<space>f", function()
 		vim.lsp.buf.format({ async = true })
 	end, bufopts)
@@ -92,19 +93,19 @@ local on_attach = function(client, bufnr)
 	--keymap.set("n", "gD", "<CMD>lua vim.lsp.buf.declaration()<CR>", opts)
 	--keymap.set("n", "gd", "<CMD>Lspsaga peek_definition<CR>", opts)
 	--keymap.set("n", "gi", "<CMD>lua vim.lsp.buf.implementation()<CR>", opts)
-	if client.name == "dartls" then
-		-- keymaps for dartls
-		map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-		map(bufnr, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
-		map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+	--|	if client.name == "dartls" then
+	-- keymaps for dartls
+	map(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+	map(bufnr, "x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+	map(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
 	--map(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", opts)
 	--map(bufnr, "n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1, '<c-u>')<cr>", {})
 	--map(bufnr, "n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1, '<c-d>')<cr>", {})
-	else
-		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-		--vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-	end
+	--|	else
+	--|		vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+	--|		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+	--vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+	--|	end
 
 	if client.name == "tsserver" then
 		vim.keymap.set("n", "<leader>rf", ":TypescriptRenameFile<CR>") -- rename file and update imports
