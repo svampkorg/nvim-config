@@ -16,7 +16,7 @@ local nt_api = require("nvim-tree.api")
 --end
 
 nvimtree.setup({
-	create_in_closed_folder = true,
+	-- create_in_closed_folder = true,
 	sync_root_with_cwd = false,
 	view = {
 		adaptive_size = true,
